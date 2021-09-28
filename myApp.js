@@ -8,7 +8,7 @@ mongoose.connect(process.env.MONGO_URI,{
   useUnifiedTopology: true 
 });
 
-// Challenge #2
+// Challenge #2 - Create Schema
 const { Schema } = mongoose;
 
 const personSchema = new Schema({
@@ -19,10 +19,16 @@ const personSchema = new Schema({
 
 let Person = mongoose.model('Person', personSchema);
 
-
-// let Person;
+// Challenge #3 - Create Doc instance
 
 const createAndSavePerson = (done) => {
+  const example = new Object();
+  example['name'] = 'zen';
+  example['age'] = 1;
+  example['favoriteFoods'] = ['treats','chicken'];
+  const doc = new Person(example);
+
+  doc.save();
   done(null /*, data*/);
 };
 
