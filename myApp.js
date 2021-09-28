@@ -22,14 +22,16 @@ let Person = mongoose.model('Person', personSchema);
 // Challenge #3 - Create Doc instance
 
 const createAndSavePerson = (done) => {
-  const example = new Object();
+  const Zen = new Object();
   example['name'] = 'zen';
   example['age'] = 1;
   example['favoriteFoods'] = ['treats','chicken'];
-  const doc = new Person(example);
+  const doc = new Person(Zen);
 
-  doc.save();
-  done(null /*, data*/);
+  doc.save(function(err, data) {
+    if (err) return console.error(err);
+    done(null, data);
+  });  
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
