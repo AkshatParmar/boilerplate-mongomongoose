@@ -11,26 +11,27 @@ mongoose.connect(process.env.MONGO_URI,{
 // Challenge #2 - Create Schema
 const { Schema } = mongoose;
 
-const personSchema = new Schema({
+var personSchema = new Schema({
   name:  String, 
   age: Number,
   favoriteFoods: [String]
 });
 
-let Person = mongoose.model('Person', personSchema);
+var Person = mongoose.model('Person', personSchema);
 
 // Challenge #3 - Create Doc instance
 
-const createAndSavePerson = (done) => {
-  const ak = new Object();
-  example['name'] = 'akshat';
-  example['age'] = 22;
-  example['favoriteFoods'] = ['beef','chicken'];
-  const akshat = new Person(ak);
+var createAndSavePerson = (done) => {
+  var ZenPar = new Person({
+    name: "Zen Parmar",
+    age: 1,
+    favoriteFoods: ["treats","chicken"]
+  });
+  console.log(ZenPar);
 
-  akshat.save(function(err, data) {
+  ZenPar.save(function(err, data) {
     if (err) return console.error(err);
-    done(null, data);
+    done(null, data)
   });  
 };
 
